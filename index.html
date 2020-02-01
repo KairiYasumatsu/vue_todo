@@ -10,20 +10,25 @@
 
 <body>
   <div id="app">
-    <p v-for="(todo, key) in todos">
-      {{ todo }}
+    <div v-for="(todo, key) in todos">
 
-      <button v-on:click="removeTodo(key)">Remove</button>
-      <button v-on:click="editshow(key)">edit</button>
+      <div v-if="editkey == key">
+        <input type="text" v-model="edittext">
+        <button v-on:click="editvalue">edit</button>
+      </div>
+
+      <div v-else>
+        {{ todo }}
+        <button v-on:click="removeTodo(key)">Remove</button>
+        <button v-on:click="editshow(key)">edit</button>
+      </div>
 
 
-    </p>
+    </div>
     <p>
       {{ text }}
     </p>
 
-    <input type="text" v-model="edittext" v-show="edit">
-    <button v-show="edit" v-on:click="editvalue">edit</button>
 
     <input type="text" v-model="text">
     <button v-on:click="addvalue">add</button>

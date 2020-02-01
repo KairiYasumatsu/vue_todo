@@ -2,9 +2,8 @@ var app = new Vue({
   el: '#app',
   data: {
     edittext: "",
-    editkey: "",
+    editkey: -1,
     text: "",
-    edit: false,
     todos: JSON.parse(localStorage.list || "[]")
   },
   methods: {
@@ -18,14 +17,14 @@ var app = new Vue({
       this.saveTodo()
     },
     editshow(key){
-      this.edit = true
-      this.editkey = (key)
+      this.edittext = this.todos[key]
+      this.editkey = key
     },
     editvalue(){
       this.todos[this.editkey] = this.edittext
      this.saveTodo()
      this.edittext = ""
-     this.edit = false
+     this.editkey = -1
     },
     saveTodo() {
       const jsonText = JSON.stringify(this.todos)
