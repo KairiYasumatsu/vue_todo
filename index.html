@@ -12,13 +12,22 @@
   <div id="app">
     <p v-for="(todo, key) in todos">
       {{ todo }}
+
       <button v-on:click="removeTodo(key)">Remove</button>
+      <button v-on:click="editshow(key)">edit</button>
+
+
     </p>
     <p>
       {{ text }}
     </p>
+
+    <input type="text" v-model="edittext" v-show="edit">
+    <button v-show="edit" v-on:click="editvalue">edit</button>
+
     <input type="text" v-model="text">
     <button v-on:click="addvalue">add</button>
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="./main.js"></script>
